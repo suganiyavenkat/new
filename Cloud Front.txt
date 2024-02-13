@@ -1,0 +1,368 @@
+Cloud-Front: Network Infrastructure - IaaS
+******************************************************************
+1. Response Time / Latency     - Quick response to the end user
+2. Cloud-Front / Edge Locations 
+3. Global           - Facebook
+   Country-Specific - Aadhar card
+4. AWS GLOBAL NETWORK INFRASTRUCTURE - NA/SA/MEEA/ASIA - 121 el
+5. S3 Transfer Acceleration
+   -Storage, IaaS, Transition - 8 SC - EXPIRY - LMR
+6. Sources
+   S3  - Static Content
+   ELB - 75% Dynamic content, 25% static content
+7. CF - Optional service
+8. DDoS - Distributed Denial of Service
+9. Practical:
+   source - s3
+   cf - https://d17r4pfz0nasx4.cloudfront.net/index.html
+
+
+Network Engineering:
+--------------------
+Cloud-Front:
+------------
+CDN - Content Delivery Network
+Cache server (Edge Locations)
+Origin
+Distributed Networks - data distributions accross globe
+TTL - Time to Live
+
+
+2. aws.amazon.com/products
+NA,SA,EM,ASIA PACIFIC - 121 Edege locations
+
+3. S3 Transfer acceleration - comparison
+   before - Origin
+   After  - Cloud front
+
+4. Static and Dynamic content - 3-tier amazon architecture
+   Mostly we use static content fetching for cloud front
+   dynamic page keep changes based on transactions
+
+5. This is an optional service, depends on the applicaton nature and usage we enbale 
+the same avoid latency in response time
+
+6. Practicle:
+1. S3 bucket creation 
+   upload the object named with : index.html
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>This is Cloud front Test</h1>
+
+</body>
+</html>
+
+
+2. Networking and content delivery 
+   cloud front 
+   distribute networks
+   get started
+   
+origin settings:
+origin domain name: s3
+origin path: specify if any folders availble in the s3
+enable origin shield (yes - additional caches copy for the content, No - No additional)
+origin url - Object url
+restrict bucket access - connect the edge locations
+
+connection attempts - 3
+connection timeout - 10  
+
+note: edge location checks the origin availability after TTL threshold over and the 
+      data deleted, new data will be requested
+
+Distributions setting:
+price class - Enable needful continent to use edge locations
+click the create distributions - takes 2 to 5 mins time
+
+
+cloud-front url
+origin url
+
+
+cloud front settings:
+Origin and origin groups
+Behaviours - Create New policy 
+   1 SEC TTL - 86400 (1day ) to max 1 year 31536000
+Error pages : maintainence msg
+Invalidations - Delete the data before TTL from the cache we can use the Invalidations
+Restrictions - Restrict the countries in order to Block list and white list
+
+Test:
+Once enbled the network distributions
+
+delete objects 
+and check the accessibility
+
+
+demolish:
+disable cloud front
+2 mins later delete the same
+ 
+
+
+https://dy6n5vn92zzxv.cloudfront.net
+https://dy6n5vn92zzxv.cloudfront.net/index.html
+
+
+
+Cloud-Front : Network Engineering : IaaS
+----------------------------------------
+1. First time access of one app - Origin {server}
+   same request second time on same app - Cached Component {Content delivery network}
+
+2. cached component - edge locations 
+
+3. Purpose to enable the edge locations: Quick response to the End users
+
+4. Cost-Applicable
+
+5. Application nature - Global and Country; Max - Global application 
+
+6. Geolocation - 4 - 121 edge locations 
+
+7. S3 Transfer Acceleration -> box1 - s3 origin; box2 - Cloud Front
+
+8. Static content  - S3    - 90%  - dormant data
+   Dynamic Content - ELB   - 10% - Webserver  - active data
+
+9. Practical: 
+   -> S3 bucket creation and index.html object upload....
+   -> Origin Url: https://15novbucket1.s3.ap-south-1.amazonaws.com/index.html 
+   -> Enable Origin Shield - yes - Multiple cached component
+   -> Create Distributions - 
+   -> https://d28dhqpt7dtebf.cloudfront.net
+   -> Cloud front Url: https://d28dhqpt7dtebf.cloudfront.net/index.html 
+
+
+10. One Cloud-front can have a Multiple no of Origins
+
+11. Behaviour - provision us to edit the TTL whenever we need 
+
+12. Error pages - Enable exception throw
+
+13. geographic restrictions - allow list, block list
+
+14. Invalidations - TTL - 86400 Secs - 
+    delete the cached component from edge location before thE TTL.
+
+15. Testing: Deleted origin - object - able to access the same from Cloud-front.
+
+
+
+Cloud-Formation : Management and Governence : Application Engineering : SaaS:
+----------------------------------------------------------------------------
+1. VPC-VPC, SUBNETS, IGW, RT, NAT, CGI, EC2 - ARCHITECTURE -> Single region - 20mins
+2. TERRAFORM - DEVOPS - IaaC - Multiple no of Architecture we can create across globe
+3. AWS Devops Service - GUI - Multiple architecture across globe
+4. programming lang - hasicorp
+
+Cloud-Front: Network Engineering - IaaS
+---------------------------------------
+1. First Hit - Origin
+   Second Hit - Cache - Edge Location or Cloud-Front or Content Delivery Network
+   Purpose: Reduces the Latency
+
+2. Global Application - Enabling
+   Conutry-Specific   - Low
+
+3. 3-Tier - Route 53 + Cloud-front or CDN 
+
+4. Sources
+   -> S3 - Static Content    - Maximum
+   -> ELB - Dynamic Content  - Minimum => webserver + Appserver
+
+5. 121 - edge locations ; 4 parts - 
+
+6. S3 Transfer acceleration
+   Box1 - Fetching reponse from origin
+   Box2 - Fetching response from CDN
+
+7. Practical:
+Origin or Object Url: https://aws21122021.s3.eu-west-2.amazonaws.com/index.html 
+cloud-front Url: https://d39ebmkzkxksq7.cloudfront.net/index.html 
+https://d39ebmkzkxksq7.cloudfront.net
+
+
+Invalidations - Immediate termination
+Editing from Behaviours - Configuration level work etc
+
+Urls?
+Origin Url 
+Cloud-Front Url
+
+KPI - Key Performance Indicators - 
+
+Prometheus && Grafana - HTTP RESPONSE CODE 200 503 403 404 500 
+log - dashboard 
+splunk
+appdb
+
+
+Cloud-Formation:IaaS
+----------------
+VPC: Virtual Private Cloud - IaaS  - 1 TO MANY 
+TERRAFORM - IaaC  - cli  - 1 TO MANY 
+aws 
+DOCKER - MASTER && SLAVE - 
+
+VPC: GUI  - 1 TO 1
+VPC, SUBNETS, IGW, RT, SGRP, EC2, NAT
+
+
+AWS : 47% ; 33%
+VPC, ELB, ASG, IAM, ROUTE 53, CLOUD FRONT, CLOUD FORMATION, SNS, S3, RDS, EC2, CODE DEPLOY AND CODE PIPELINE, MIGRATION, LAMBDA
+REDSHIFT, CLOUD TRIAL 
+
+
+DEVOPS - 70%
+TERRAFORM, DOCKER, JENKINS, ANSIBLE, SPLUNK, PROMETHEUS, GIT, 
+CI AND CD PROJECT - Groovy Script
+
+
+
+Network Engineering : Cloud Front:
+=========================================================================
+
+-> Edge Locations : Streamlines the Latency => 121; 4 PARTS
+
+-> S3 Transfer Acceleration 
+Box 1: Disabled, S3 origin 
+Box 2: Enabled, Cloud-Front(Edge Location/CDN) 
+
+->  Two Contents
+Static  - S3 Object - 80%
+Dynamic - ELB  - 20% 
+
+-> 
+Global           = 100%
+Country-Specific = aadhar application 
+
+
+Practical:
+AWS Service : S3 , CLOUD-FRONT
+1. S3 BUCKET - PUBLIC - cloudfrontdemo10
+2. CDN Enable
+3. S3 Bucket - Object Upload
+
+Origin Url/Object Url: 
+https://cloudfrontdemo10.s3.ap-south-1.amazonaws.com/index.html
+
+Cloud_front Url:
+https://dpeh7xk60w62a.cloudfront.net/index.html
+https://dpeh7xk60w62a.cloudfront.net/index.html
+
+
+
+Cloud-Formation: IaaS - Environment Build Tool
+==========================================================================
+Management and Governence 
+
+Template - 
+
+
+Cloud-Front:
+Why? Streamlines latency
+edge location? 121
+globe? 4
+TTL - Time to Live 
+min - 0 secs
+max - 365 days
+default - 1 day
+
+invalidations? 
+index.html - 1 day TTL
+
+SOURCE - Static - s3 ;  Dynamic - ELB (App)
+
+Nature :
+Global           - always
+Country-Specific - User base 
+
+Cloud_front:
+Domain name
+arn 
+
+
+two urls:
+Origin / Object Url
+Cloud-front Url
+
+
+Eng: Networking
+
+End Goal= " Customer Sat "
+
+Cloud Formation: Infrastructure - IaaC, IaaS -> json and yml
+Template - 
+Networking migration?? not possible
+
+{server + db + nw + sec + sto}  - nw
+
+
+01-03-2022:
+=========================================================================
+Cloud Front - Network Engineering - IaaS
+==========================================================================
+Profile: "Solution Architect"
+
+1. 3-tier Architecture - after route 53
+2. Sources: Application(ELB) and S3 Bucket
+3. First time request-Origin- Response Time should be slow - Latency High
+   Second time and same request - Latency Low / Normal
+4. AWS Cloud front - Paid Service - per hour Doller 1.2
+5. Global Edge Locations = 121 ; Parts = 4
+6. S3 - Transfer Acceleration 
+   Box1: Origin :      Latency High
+   Box2: Cloud-Front : Latency Low
+With Client Approval - Paid Feature in S3.
+
+7. Remote user - Facebook - Global - ELB application connect - response
+   Dynamic Content  
+   RU - S3 - Static Content 
+   TTL - Time to Live
+Global Application - Keeping the static content into CDN - Right practice   
+8. Nature of the Applications
+   Country-Specific - Zomoto, Flipkart
+   Global           -  
+
+9. Practical: 
+=> Scope Of the project: "S3 - Object upload - Edge location - Object                           loss - Recovery"
+---> AWS Service : Cloud Front, S3
+=> S3 Bucket Creation : s3://aws010322
+=> Cloud Front Distribution Domain name:    https://d3p435s2zpofs0.cloudfront.net
+=> Object Upload 
+   Object Url/Origin Url: 
+https://aws010322.s3.eu-west-2.amazonaws.com/index.html   
+=> Clout-Front Url:
+https://d3p435s2zpofs0.cloudfront.net/index.html    
+=> TTL - ??? 
+Min     - 0 secs
+Default - 1 day
+Max     - 365 days
+
+==> Invalidations - TTL - 1 Day
+    
+Hybrid  -  "50% aws service +  50% On-premises"
+
+
+==========================================================================
+Cloud Formation:  Management and Governence
+==========================================================================
+Terraform ? - HCL - IaaC - 100%
+VPC ? - Over - IaaC/IaaS - Networking / Server / Security - 20MINS - 
+Cloud Formation ? - Template -> AWS Specific 
+
+3 - sessions - 30mins - AWS CLI - 
+
+Cloud-Formation ->> "Application Eng"
+Customer Satisfaction
+
+Terraform - Devops Tool - All CS
+VPC - Virtual private Cloud - "Nw, sec, server" - We creates  only one
+Cloud-Formation? - infra build using template - diff regions - many 
+
+
