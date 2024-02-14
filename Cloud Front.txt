@@ -9,6 +9,9 @@ Cloud-Front: Network Infrastructure - IaaS
    -Storage, IaaS, Transition - 8 SC - EXPIRY - LMR
 6. Sources
    S3  - Static Content
+
+
+
    ELB - 75% Dynamic content, 25% static content
 7. CF - Optional service
 8. DDoS - Distributed Denial of Service
